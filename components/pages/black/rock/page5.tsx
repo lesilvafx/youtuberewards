@@ -26,9 +26,9 @@ export default function Page({
 
   // SET CONTENT DATA
   const VSL = VSLBlackRock;
-  const videoId = "68a4d6f8cad301b5b6b568f7";
+  const videoId = "693ac865b51c07f39243a920";
   const backLink = `https://${userHost}/promo`;
-  const pitchTime = 700;
+  const pitchTime = 00;
 
   // VIDEO VERIFY
   useEffect(() => {
