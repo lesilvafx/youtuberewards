@@ -10,30 +10,51 @@ export default function HeaderScript({ content }: { content: string }) {
 
   const pixelId = idList[content];
 
-  if (!pixelId) return null;
-
   return (
     <>
+      {/* GOOGLE ANALYTICS: carrega sempre que entrar na página */}
       <Script
-        id="utmify-config"
+        id="google-tag"
+        src="https://www.googletagmanager.com/gtag/js?id=G-HCG298JBX7"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-tag-config"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{
-          __html: `window.pixelId=${JSON.stringify(pixelId)};`,
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HCG298JBX7');
+          `,
         }}
       />
-      <Script
-        id="utmify-pixel"
-        src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
-        strategy="afterInteractive"
-      />
-      <Script
-        id="utmify-utms"
-        src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-        data-utmify-prevent-subids
-        strategy="afterInteractive"
-      />
+
+      {/* UTMIFY: só carrega se existir pixelId (igual era antes) */}
+      {pixelId && (
+        <>
+          <Script
+            id="utmify-config"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.pixelId=${JSON.stringify(pixelId)};`,
+            }}
+          />
+          <Script
+            id="utmify-pixel"
+            src="https://cdn.utmify.com.br/scripts/pixel/pixel.js"
+            strategy="afterInteractive"
+          />
+          <Script
+            id="utmify-utms"
+            src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+            data-utmify-prevent-subids
+            strategy="afterInteractive"
+          />
+        </>
+      )}
     </>
   );
-  
-};
 
+};
