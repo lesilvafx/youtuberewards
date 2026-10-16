@@ -32,6 +32,24 @@ export default function HeaderScript({ content }: { content: string }) {
         data-utmify-prevent-subids
         strategy="afterInteractive"
       />
+ <Script
+        id="google-tag"
+        src="https://www.googletagmanager.com/gtag/js?id=G-HCG298JBX7"
+        strategy="afterInteractive"
+      />
+      <Script
+        id="google-tag-config"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-HCG298JBX7');
+          `,
+        }}
+      />
+
     </>
   );
   
