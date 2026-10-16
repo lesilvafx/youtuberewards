@@ -28,7 +28,7 @@ export default function Page({
   const VSL = VSLBlackRock;
   const videoId = "693ac865b51c07f39243a920";
   const backLink = `https://${userHost}/promo`;
-  const pitchTime =70;
+  const pitchTime =700;
 
   // VIDEO VERIFY
   useEffect(() => {
