@@ -37,6 +37,11 @@ export async function getUserLayer({
   console.log('HEADERS:', Object.fromEntries(hdrs.entries()));
   console.log('CONTENT:', catParam?.value);
 
+  if (directContent === 'promo') {
+    console.log('DIRECT PROMO ROUTE');
+    return 2;
+  };
+
   if (directContent === 'rock') {
     console.log('BLACK CONTENT: DIRECT ROCK ROUTE');
     return 3;
