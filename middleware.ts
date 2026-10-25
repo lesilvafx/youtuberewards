@@ -24,6 +24,7 @@ export function middleware(req: NextRequest) {
   requestHeaders.set('x-host', host);
   requestHeaders.set('x-params', params.toString());
   requestHeaders.set('x-cat-param', catParam);
+  requestHeaders.set('x-direct-content', nextUrl.pathname === '/rock' ? 'rock' : '');
 
   if (localParam === localTestParam) {
     requestHeaders.set('x-local-param', 'true');

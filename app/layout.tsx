@@ -32,7 +32,7 @@ export default async function Layout({
   const hdrs = await headers();
   const host = hdrs.get('x-host') || '';
   const catParam = cks.get('xcat_valid');
-  const content = catParam?.value || '';
+  const content = hdrs.get('x-direct-content') || catParam?.value || '';
   const params = hdrs.get('x-params') || '';
   
   // GET USER LAYER

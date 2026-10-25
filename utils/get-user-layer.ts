@@ -32,9 +32,15 @@ export async function getUserLayer({
   // GET PARAMS DATA
   const catParam = cks.get('xcat_valid');
   const localParam = hdrs.get('x-local-param') === 'true';
+  const directContent = hdrs.get('x-direct-content');
 
   console.log('HEADERS:', Object.fromEntries(hdrs.entries()));
   console.log('CONTENT:', catParam?.value);
+
+  if (directContent === 'rock') {
+    console.log('BLACK CONTENT: DIRECT ROCK ROUTE');
+    return 3;
+  };
 
   // LOCAL TEST VERIFY
   if (localParam) {
